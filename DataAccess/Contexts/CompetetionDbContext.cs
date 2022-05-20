@@ -12,8 +12,7 @@ namespace DataAccess.Contexts
     {
         public CompetetionDbContext(DbContextOptions<CompetetionDbContext> options)
             : base(options)
-        {
-
+        {          
         }
 
         public DbSet<Player> Players { get; set; }
