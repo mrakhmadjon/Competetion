@@ -8,6 +8,6 @@ namespace DataAccess.Interfaces
 {
     public interface IUnitOfWork
     {
-        Task<int> Commit();
+        ValueTask<int> Commit();
     }
 }
