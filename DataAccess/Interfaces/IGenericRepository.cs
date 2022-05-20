@@ -11,7 +11,7 @@ namespace DataAccess.Interfaces
         ValueTask<T> GetByIdAsync(int id);
         ValueTask<IEnumerable<T>> GetAllAsync();
         ValueTask<T> AddAsync(T entity);
-        ValueTask UpdateAsync(T entity);
+        ValueTask<T> UpdateAsync(T entity);
         ValueTask<bool> DeleteAsync(int id);
     }
 }

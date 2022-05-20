@@ -48,10 +48,12 @@ namespace DataAccess.Repositories
             return await dbSet.FindAsync(id);
         }
 
-        public ValueTask UpdateAsync(T entity)
+        public async ValueTask<T> UpdateAsync(T entity)
         {
-            dbContext.Entry(entity).State = EntityState.Modified;            
-            return ValueTask.CompletedTask;
+            var entry = dbSet.Update(entity);
+
+            return entry.Entity;          
+            
         }
     }
 }

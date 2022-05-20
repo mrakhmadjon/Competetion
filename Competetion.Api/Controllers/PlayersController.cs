@@ -1,10 +1,11 @@
-﻿using DataAccess.Interfaces;
+﻿using Competetion.Api.Dtos;
+using DataAccess.Interfaces;
 using DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Competetion.Api.Controllers
 {
@@ -23,36 +24,52 @@ namespace Competetion.Api.Controllers
 
 
         [HttpGet]
-        public async ValueTask<IEnumerable<Player>> GetAsync()
+        public async ValueTask<IEnumerable<Player>> GetAllAsync()
         {
             return await playerRepository.GetAllAsync();
         }
 
-        // GET api/<PlayersController>/5
+       
         [HttpGet("{id}")]
         public async ValueTask<Player> Get(int id)
         {
             return await playerRepository.GetByIdAsync(id);
         }
 
-        // POST api/<PlayersController>
+       
         [HttpPost]
         public async ValueTask<Player> Post(Player player)
         {
-            return await playerRepository.AddAsync(player);
+            var postedPlayer =  await playerRepository.AddAsync(player);
+            await unitOfWork.Commit();
+            return postedPlayer;
         }
 
-        // PUT api/<PlayersController>/5
+        
         [HttpPut("{id}")]
-        public void Put(Player player)
+        public async ValueTask<IActionResult> Put(int id, PlayerDto player)
         {
-
+            var playerAsked = await playerRepository.GetByIdAsync(id);
+            if(playerAsked != null)
+            {
+                playerAsked.FirstName = player.FirstName;
+                playerAsked.LastName = player.LastName;
+                playerAsked.Age = player.Age;
+                playerAsked.SportType = player.SportType;
+                var updatedPlayer = await playerRepository.UpdateAsync(playerAsked);
+                await unitOfWork.Commit();
+                return Ok(updatedPlayer);
+            }
+            return NotFound();
         }
 
-        // DELETE api/<PlayersController>/5
+       
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async ValueTask<bool> Delete(int id)
         {
+            var isDeleted =  await playerRepository.DeleteAsync(id);
+            await unitOfWork.Commit();
+            return isDeleted;
         }
     }
 }
