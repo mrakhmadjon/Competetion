@@ -1,4 +1,6 @@
 using DataAccess.Contexts;
+using DataAccess.Interfaces;
+using DataAccess.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +39,10 @@ namespace Competetion.Api
             {
                 optioins.UseNpgsql(Configuration.GetConnectionString("CompDbConnection"));
             });
+
+            services.AddScoped<IUnitOfWork,UnitOfWork>();
+            services.AddScoped<IPlayerRepository,PlayerRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

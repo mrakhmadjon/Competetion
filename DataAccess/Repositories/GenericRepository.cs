@@ -27,10 +27,15 @@ namespace DataAccess.Repositories
            return entity;
         }
 
-        public ValueTask DeleteAsync(T entity)
+        public async ValueTask<bool> DeleteAsync(int id)
         {
-            dbSet.Remove(entity);            
-            return ValueTask.CompletedTask;
+            var entity = await dbSet.FindAsync(id);
+            if(entity != null)
+            {
+                dbSet.Remove(entity);
+                return true;
+            }                       
+           return false;
         }
 
         public async ValueTask<IEnumerable<T>> GetAllAsync()
