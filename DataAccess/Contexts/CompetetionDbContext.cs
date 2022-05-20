@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Contexts
 {
-    internal class CompetetionDbContext : DbContext
+    public class CompetetionDbContext : DbContext
     {
         public CompetetionDbContext(DbContextOptions<CompetetionDbContext> options)
             : base(options)
