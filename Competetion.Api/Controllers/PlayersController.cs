@@ -38,9 +38,16 @@ namespace Competetion.Api.Controllers
 
        
         [HttpPost]
-        public async ValueTask<Player> Post(Player player)
+        public async ValueTask<Player> Post(PlayerDto player)
         {
-            var postedPlayer =  await playerRepository.AddAsync(player);
+            Player player1 = new Player
+            {
+                FirstName = player.FirstName,
+                LastName = player.LastName,
+                Age = player.Age,
+                SportType = player.SportType
+            };
+            var postedPlayer =  await playerRepository.AddAsync(player1);
             await unitOfWork.Commit();
             return postedPlayer;
         }
