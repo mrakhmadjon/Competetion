@@ -17,24 +17,23 @@ namespace CompetetionClient
             var channel = GrpcChannel.ForAddress("https://localhost:5001");
             var playerClient = new Players.PlayersClient(channel);
 
-            
+
 
             #region Create          
-            /*
-                        var newPlayer = new PlayerDto()
-                        {
-                            FirstName = "Zafar",
-                            LastName = "Bo'riyev",
-                            Age = 25,
-                            SportType = "Restling"
-                        };
+/*
+            var newPlayer = new PlayerDto()
+            {
+                FirstName = "Kamron",
+                LastName = "Samadov",
+                Age = 25,
+                SportType = "Restling"
+            };
 
-                        var addedPlayer = await playerClient.CreateAsync(newPlayer);
+            var addedPlayer = await playerClient.CreateAsync(newPlayer);
 
-                        Console.WriteLine($"FirstName:{addedPlayer.FirstName}\nLastName: {addedPlayer.LastName}\nAge: {addedPlayer.Age}\nSport type: {addedPlayer.SportType}");
-            */
+            Console.WriteLine($"FirstName:{addedPlayer.FirstName}\nLastName: {addedPlayer.LastName}\nAge: {addedPlayer.Age}\nSport type: {addedPlayer.SportType}");
+*/
             #endregion
-
 
 
             #region Update
@@ -55,6 +54,7 @@ namespace CompetetionClient
             Console.WriteLine($"FirstName:{updatedPlayer.FirstName}\nLastName: {updatedPlayer.LastName}\nAge: {updatedPlayer.Age}\nSport type: {updatedPlayer.SportType}");
             */
             #endregion
+
 
             #region Delete
             /*
@@ -83,18 +83,9 @@ namespace CompetetionClient
             */
             #endregion
 
+
             #region GetAll
-
-            //using(var call = playerClient.GetAll(new EmptyRequest()))
-            //{
-            //    while (await call.ResponseStream.MoveNext())
-            //    {
-            //        var currentPlayer = call.ResponseStream.Current;
-            //        if (currentPlayer != null)
-            //            Console.WriteLine($"FirstName:{currentPlayer.FirstName}\nLastName: {currentPlayer.LastName}\nAge: {currentPlayer.Age}\nSport type: {currentPlayer.SportType}");
-
-            //    }
-            //}
+/*
             using (var call = playerClient.GetAll(new EmptyRequest()))
             {
 
@@ -104,8 +95,9 @@ namespace CompetetionClient
                     Console.WriteLine($"FirstName:{currentPlayer.FirstName}\nLastName: {currentPlayer.LastName}\nAge: {currentPlayer.Age}\nSport type: {currentPlayer.SportType}");
                 }
             }
-
+*/
             #endregion
+
         }
     }
 }
