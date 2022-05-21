@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option csharp_namespace = "CompetetionServer";
+
+package greet;
+
+// The greeting service definition.
+service Players {
+  // Sends a greeting
+  rpc GetAll (Empty) returns (stream PlayerModel);
+  rpc GetById (PlayerRequestById) returns (PlayerModel);
+  rpc Create(PlayerDto) returns (PlayerModel);
+  rpc Update(PlayerModelForUpdate) returns (PlayerModel);
+  rpc Delete(DeleteId) returns (IsDeleted);
+
+}
+
+message PlayerRequestById {
+  int32 playerID = 1;
+}
+message DeleteId{
+	int32 playerID = 1;
+}
+message IsDeleted{
+	bool isDeleted = 1;
+}
+message Empty{
+
+}
+message PlayerModelForUpdate{
+	int32 playerID = 1;
+	PlayerDto playerDto = 2;
+}
+message PlayerModel{
+	int32 playerID = 1;
+	string firstName = 2;
+	string lastName = 3;
+	int32 age = 4;
+	string sportType = 5;
+}
+message PlayerDto{	
+	string firstName = 2;
+	string lastName = 3;
+	int32 age = 4;
+	string sportType = 5;
+}

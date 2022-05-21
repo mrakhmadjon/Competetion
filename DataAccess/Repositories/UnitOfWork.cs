@@ -20,7 +20,7 @@ namespace DataAccess.Repositories
 
         public void Dispose()
         {
-            GC.SuppressFinalize(this);
+            GC.SuppressFinalize(this);            
         }
         public async ValueTask<int> Commit()
         {
