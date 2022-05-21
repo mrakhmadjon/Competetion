@@ -2,6 +2,8 @@
 using Grpc.Core;
 using System.Threading.Tasks;
 using DataAccess.Models;
+using System;
+
 namespace CompetetionServer.Services
 {
     public class PlayersService : Players.PlayersBase
@@ -42,17 +44,23 @@ namespace CompetetionServer.Services
         public override async Task<PlayerModel> GetById(PlayerRequestById request, ServerCallContext context)
         {
             var player = await unitOfWork.Players.GetByIdAsync(request.PlayerID);
-            PlayerModel playerModel = new PlayerModel()
+
+            if(player != null)
             {
-                PlayerID = player.Id,
-                FirstName = player.FirstName,
-                LastName = player.LastName,
-                Age = player.Age,
-                SportType = player.SportType
+                PlayerModel playerModel = new PlayerModel()
+                {
+                    PlayerID = player.Id,
+                    FirstName = player.FirstName,
+                    LastName = player.LastName,
+                    Age = player.Age,
+                    SportType = player.SportType
 
-            };
+                };
 
-            return playerModel;
+                return playerModel;
+            }
+
+           throw new RpcException(new Status(StatusCode.NotFound, "No Player was found"));
 
         }
         

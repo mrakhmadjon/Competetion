@@ -49,22 +49,30 @@ namespace CompetetionClient
             #endregion
 
             #region Delete
-/*
-            DeleteId deletingPlayerId = new DeleteId { PlayerID = 7 };
+            /*
+                        DeleteId deletingPlayerId = new DeleteId { PlayerID = 7 };
 
-            var isDeleted = await playerClient.DeleteAsync(deletingPlayerId);
-            if (isDeleted.IsDeleted_)
-            {
-                Console.WriteLine("Player successfully Deleted");
-            }
-            else
-                Console.WriteLine("Delete operation was not successfull");
-*/
+                        var isDeleted = await playerClient.DeleteAsync(deletingPlayerId);
+                        if (isDeleted.IsDeleted_)
+                        {
+                            Console.WriteLine("Player successfully Deleted");
+                        }
+                        else
+                            Console.WriteLine("Delete operation was not successfull");
+            */
             #endregion
 
 
 
+            #region GetByID
+            var clientId = new PlayerRequestById { PlayerID = 1  };
 
+
+            var client = await playerClient.GetByIdAsync(clientId);
+            
+            Console.WriteLine($"FirstName:{client.FirstName}\nLastName: {client.LastName}\nAge: {client.Age}\nSport type: {client.SportType}");
+
+            #endregion
 
 
         }
