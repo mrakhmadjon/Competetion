@@ -7,7 +7,7 @@ package greet;
 // The greeting service definition.
 service Players {
   // Sends a greeting
-  rpc GetAll (Empty) returns (stream PlayerModel);
+  rpc GetAll (EmptyRequest) returns (stream PlayerModel);
   rpc GetById (PlayerRequestById) returns (PlayerModel);
   rpc Create(PlayerDto) returns (PlayerModel);
   rpc Update(PlayerModelForUpdate) returns (PlayerModel);
@@ -24,7 +24,7 @@ message DeleteId{
 message IsDeleted{
 	bool isDeleted = 1;
 }
-message Empty{
+message EmptyRequest{
 
 }
 message PlayerModelForUpdate{

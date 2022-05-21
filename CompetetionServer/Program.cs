@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CompetetionServer
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {

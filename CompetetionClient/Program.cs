@@ -1,15 +1,23 @@
-﻿using Grpc.Net.Client;
+﻿using Grpc.Core;
+using Grpc.Net.Client;
 using System;
 using System.Threading.Tasks;
 
 namespace CompetetionClient
 {
+#pragma warning disable
     internal class Program
     {
+        protected Program()
+        {
+
+        }
         static async Task Main(string[] args)
         {
             var channel = GrpcChannel.ForAddress("https://localhost:5001");
             var playerClient = new Players.PlayersClient(channel);
+
+            
 
             #region Create          
             /*
@@ -65,16 +73,39 @@ namespace CompetetionClient
 
 
             #region GetByID
-            var clientId = new PlayerRequestById { PlayerID = 1  };
+            /*
+                        var clientId = new PlayerRequestById { PlayerID = 6  };
 
 
-            var client = await playerClient.GetByIdAsync(clientId);
-            
-            Console.WriteLine($"FirstName:{client.FirstName}\nLastName: {client.LastName}\nAge: {client.Age}\nSport type: {client.SportType}");
+                        var client = await playerClient.GetByIdAsync(clientId);
 
+                        Console.WriteLine($"FirstName:{client.FirstName}\nLastName: {client.LastName}\nAge: {client.Age}\nSport type: {client.SportType}");
+            */
             #endregion
 
+            #region GetAll
 
+            //using(var call = playerClient.GetAll(new EmptyRequest()))
+            //{
+            //    while (await call.ResponseStream.MoveNext())
+            //    {
+            //        var currentPlayer = call.ResponseStream.Current;
+            //        if (currentPlayer != null)
+            //            Console.WriteLine($"FirstName:{currentPlayer.FirstName}\nLastName: {currentPlayer.LastName}\nAge: {currentPlayer.Age}\nSport type: {currentPlayer.SportType}");
+
+            //    }
+            //}
+            using (var call = playerClient.GetAll(new EmptyRequest()))
+            {
+
+                while (await call.ResponseStream.MoveNext())
+                {
+                    var currentPlayer = call.ResponseStream.Current;
+                    Console.WriteLine($"FirstName:{currentPlayer.FirstName}\nLastName: {currentPlayer.LastName}\nAge: {currentPlayer.Age}\nSport type: {currentPlayer.SportType}");
+                }
+            }
+
+            #endregion
         }
     }
 }

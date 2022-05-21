@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
+#pragma warning disable
     public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly CompetetionDbContext dbContext;

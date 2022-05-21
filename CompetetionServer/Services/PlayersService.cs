@@ -3,6 +3,7 @@ using Grpc.Core;
 using System.Threading.Tasks;
 using DataAccess.Models;
 using System;
+using System.Collections.Generic;
 
 namespace CompetetionServer.Services
 {
@@ -36,11 +37,26 @@ namespace CompetetionServer.Services
                 Age = addedPlayer.Age
             };
          }
-        //public override Task GetAll(Empty request, IServerStreamWriter<PlayerModel> responseStream, ServerCallContext context)
-        //{
 
-        //}
+        public override async Task GetAll(EmptyRequest request, IServerStreamWriter<PlayerModel> responseStream, ServerCallContext context)
+        {
+            var allPlayers = await unitOfWork.Players.GetAllAsync();
+            
 
+            foreach (var player in allPlayers)
+            {
+                PlayerModel playerModel = new PlayerModel()
+                {
+                    PlayerID = player.Id,
+                    FirstName = player.FirstName,
+                    LastName = player.LastName,
+                    Age = player.Age,
+                    SportType = player.SportType
+                };
+                await responseStream.WriteAsync(playerModel);
+            }
+        }
+        
         public override async Task<PlayerModel> GetById(PlayerRequestById request, ServerCallContext context)
         {
             var player = await unitOfWork.Players.GetByIdAsync(request.PlayerID);
