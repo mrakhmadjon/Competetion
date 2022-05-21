@@ -14,26 +14,25 @@ namespace Competetion.Api.Controllers
     public class PlayersController : ControllerBase
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IPlayerRepository playerRepository;
 
-        public PlayersController(IUnitOfWork unitOfWork, IPlayerRepository playerRepository)
+        public PlayersController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            this.playerRepository = playerRepository;
         }
 
 
         [HttpGet]
         public async ValueTask<IEnumerable<Player>> GetAllAsync()
         {
-            return await playerRepository.GetAllAsync();
+            return await unitOfWork.Players.GetAllAsync();
+            
         }
 
        
         [HttpGet("{id}")]
         public async ValueTask<Player> Get(int id)
         {
-            return await playerRepository.GetByIdAsync(id);
+            return await unitOfWork.Players.GetByIdAsync(id);
         }
 
        
@@ -47,7 +46,7 @@ namespace Competetion.Api.Controllers
                 Age = player.Age,
                 SportType = player.SportType
             };
-            var postedPlayer =  await playerRepository.AddAsync(player1);
+            var postedPlayer =  await unitOfWork.Players.AddAsync(player1);
             await unitOfWork.Commit();
             return postedPlayer;
         }
@@ -56,14 +55,14 @@ namespace Competetion.Api.Controllers
         [HttpPut("{id}")]
         public async ValueTask<IActionResult> Put(int id, PlayerDto player)
         {
-            var playerAsked = await playerRepository.GetByIdAsync(id);
+            var playerAsked = await unitOfWork.Players.GetByIdAsync(id);
             if(playerAsked != null)
             {
                 playerAsked.FirstName = player.FirstName;
                 playerAsked.LastName = player.LastName;
                 playerAsked.Age = player.Age;
                 playerAsked.SportType = player.SportType;
-                var updatedPlayer = await playerRepository.UpdateAsync(playerAsked);
+                var updatedPlayer = await unitOfWork.Players.UpdateAsync(playerAsked);
                 await unitOfWork.Commit();
                 return Ok(updatedPlayer);
             }
@@ -74,7 +73,7 @@ namespace Competetion.Api.Controllers
         [HttpDelete("{id}")]
         public async ValueTask<bool> Delete(int id)
         {
-            var isDeleted =  await playerRepository.DeleteAsync(id);
+            var isDeleted =  await unitOfWork.Players.DeleteAsync(id);
             await unitOfWork.Commit();
             return isDeleted;
         }

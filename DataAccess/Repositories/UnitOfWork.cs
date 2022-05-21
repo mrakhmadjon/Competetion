@@ -11,10 +11,11 @@ namespace DataAccess.Repositories
     public class UnitOfWork : IUnitOfWork,IDisposable
     {
         private readonly CompetetionDbContext dbContext;        
-
+        public IPlayerRepository Players { get; set; }
         public UnitOfWork(CompetetionDbContext dbContext)
         {
             this.dbContext = dbContext;
+            Players = new PlayerRepository(dbContext);
         }
 
         public void Dispose()

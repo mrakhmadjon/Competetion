@@ -8,6 +8,7 @@ namespace DataAccess.Interfaces
 {
     public interface IUnitOfWork
     {
+        IPlayerRepository Players { get; set; }
         ValueTask<int> Commit();
     }
 }

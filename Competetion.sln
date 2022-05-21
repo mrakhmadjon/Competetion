@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Competetion.Api", "Competet
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{F048B8D1-54D6-4592-AF71-107D11619DBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetetionServer", "CompetetionServer\CompetetionServer.csproj", "{3C263E6C-2CBA-4CCA-877A-511FFDC3778A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F048B8D1-54D6-4592-AF71-107D11619DBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F048B8D1-54D6-4592-AF71-107D11619DBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F048B8D1-54D6-4592-AF71-107D11619DBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C263E6C-2CBA-4CCA-877A-511FFDC3778A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C263E6C-2CBA-4CCA-877A-511FFDC3778A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C263E6C-2CBA-4CCA-877A-511FFDC3778A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C263E6C-2CBA-4CCA-877A-511FFDC3778A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
