@@ -7,9 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Competetion.Api", "Competet
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{F048B8D1-54D6-4592-AF71-107D11619DBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetetionServer", "CompetetionServer\CompetetionServer.csproj", "{3C263E6C-2CBA-4CCA-877A-511FFDC3778A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompetetionServer", "CompetetionServer\CompetetionServer.csproj", "{3C263E6C-2CBA-4CCA-877A-511FFDC3778A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetetionClient", "CompetetionClient\CompetetionClient.csproj", "{60C021DA-072F-4721-9CDC-B6E1F5C98AD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompetetionClient", "CompetetionClient\CompetetionClient.csproj", "{60C021DA-072F-4721-9CDC-B6E1F5C98AD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetetionService", "CompetetionService\CompetetionService.csproj", "{4E6241F4-F113-4575-BE5A-4214C8832097}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetetionServiceClient", "CompetetionServiceClient\CompetetionServiceClient.csproj", "{905BCDF5-557E-41FE-B1C9-3EA4EF25E9B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{60C021DA-072F-4721-9CDC-B6E1F5C98AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60C021DA-072F-4721-9CDC-B6E1F5C98AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60C021DA-072F-4721-9CDC-B6E1F5C98AD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E6241F4-F113-4575-BE5A-4214C8832097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E6241F4-F113-4575-BE5A-4214C8832097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E6241F4-F113-4575-BE5A-4214C8832097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E6241F4-F113-4575-BE5A-4214C8832097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{905BCDF5-557E-41FE-B1C9-3EA4EF25E9B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{905BCDF5-557E-41FE-B1C9-3EA4EF25E9B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{905BCDF5-557E-41FE-B1C9-3EA4EF25E9B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{905BCDF5-557E-41FE-B1C9-3EA4EF25E9B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
